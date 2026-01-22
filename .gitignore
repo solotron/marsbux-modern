@@ -1,0 +1,48 @@
+# Build artifacts
+*.o
+*.a
+*.lo
+*.la
+*.so
+*.dylib
+*.exe
+*.dll
+litecoind
+litecoin-cli
+litecoin-tx
+litecoin-wallet
+bitcoind
+bitcoin-cli
+bitcoin-tx
+bitcoin-wallet
+marsbuxd
+marsbux-cli
+marsbux-tx
+marsbux-wallet
+
+# Autotools
+autom4te.cache/
+config.log
+config.status
+configure
+Makefile
+Makefile.in
+aclocal.m4
+
+# Qt build
+src/qt/*.moc
+src/qt/*.cpp~
+src/qt/moc_*
+src/qt/ui_*
+src/qt/marsbux-qt
+src/qt/marsbux-qt.exe
+src/qt/marsbux-qt.app
+
+# Misc
+.deps/
+.libs/
+*.swp
+*~
+*.bak
+tags
+cscope.*
