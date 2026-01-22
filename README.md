@@ -5,6 +5,8 @@ marsbux Core integration/staging tree
 
 https://marsbux.org
 
+NOTE: THIS IS NOT YET READY FOR USERS TO DOWNLOAD! IT IS SIMPLY AN INITIAL BUILD!
+
 What is marsbux?
 ----------------
 
