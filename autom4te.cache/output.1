@@ -276,11 +276,10 @@ then :
     printf "%s\n" "$0: be upgraded to zsh 4.3.4 or later."
   else
     printf "%s\n" "$0: Please tell bug-autoconf@gnu.org and
-$0: https://github.com/marsbux-project/marsbux/issues
-$0: about your system, including any error possibly output
-$0: before this message. Then install a modern shell, or
-$0: manually run the script under such a shell if you do
-$0: have one."
+$0: https://github.com/marsbux-project/marsbux/issues about
+$0: your system, including any error possibly output before
+$0: this message. Then install a modern shell, or manually
+$0: run the script under such a shell if you do have one."
   fi
   exit 1
 fi
@@ -1860,11 +1859,11 @@ Optional Features:
                           and glibc-back-compat is not enabled)
   --disable-asm           disable assembly routines (enabled by default)
   --disable-zmq           disable ZMQ notifications
-  --enable-multiprocess   build multiprocess marsbux-node, marsbux-wallet,
-                          and marsbux-gui executables in addition to
-                          monolithic marsbuxd and marsbux-qt executables.
-                          Requires libmultiprocess library. Experimental
-                          (default is no)
+  --enable-multiprocess   build multiprocess marsbux-node, marsbux-wallet, and
+                          marsbux-gui executables in addition to monolithic
+                          marsbuxd and marsbux-qt executables. Requires
+                          libmultiprocess library. Experimental (default is
+                          no)
   --enable-sse2           enable SSE2 instructions in the scrypt library.
                           (default is disabled)
   --disable-man           do not install man pages (default is to install)
