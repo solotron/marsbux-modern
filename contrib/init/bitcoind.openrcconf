@@ -1,0 +1,33 @@
+# /etc/conf.d/marsbuxd: config file for /etc/init.d/marsbuxd
+
+# Config file location
+#marsbuxD_CONFIGFILE="/etc/marsbux/marsbux.conf"
+
+# What directory to write pidfile to?  (created and owned by $marsbuxD_USER)
+#marsbuxD_PIDDIR="/var/run/marsbuxd"
+
+# What filename to give the pidfile
+#marsbuxD_PIDFILE="${marsbuxD_PIDDIR}/marsbuxd.pid"
+
+# Where to write marsbuxd data (be mindful that the blockchain is large)
+#marsbuxD_DATADIR="/var/lib/marsbuxd"
+
+# User and group to own marsbuxd process
+#marsbuxD_USER="marsbux"
+#marsbuxD_GROUP="marsbux"
+
+# Path to marsbuxd executable
+#marsbuxD_BIN="/usr/bin/marsbuxd"
+
+# Nice value to run marsbuxd under
+#marsbuxD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#marsbuxD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for marsbuxd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+marsbuxD_SIGTERM_TIMEOUT=600
