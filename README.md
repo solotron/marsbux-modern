@@ -3,7 +3,7 @@ marsbux Core integration/staging tree
 
 [![Build Status](https://travis-ci.org/marsbux-project/marsbux.svg?branch=master)](https://travis-ci.org/marsbux-project/marsbux)
 
-https://marsbux.org
+https://marsbux.com
 
 NOTE: THIS IS NOT YET READY FOR USERS TO DOWNLOAD! IT IS SIMPLY AN INITIAL BUILD!
 
