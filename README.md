@@ -17,7 +17,7 @@ out collectively by the network. marsbux Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the marsbux Core software, see [https://marsbux.org](https://marsbux.org).
+the marsbux Core software, see [https://marsbux.com](https://marsbux.com).
 
 License
 -------
