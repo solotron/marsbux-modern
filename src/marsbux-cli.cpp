@@ -55,7 +55,7 @@ static void SetupCliArgs(ArgsManager& argsman)
     const auto regtestBaseParams = CreateBaseChainParams(CBaseChainParams::REGTEST);
 
     argsman.AddArg("-version", "Print version and exit", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
-    argsman.AddArg("-conf=<file>", strprintf("Specify configuration file. Relative paths will be prefixed by datadir location. (default: %s)", BITCOIN_CONF_FILENAME), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
+    argsman.AddArg("-conf=<file>", strprintf("Specify configuration file. Relative paths will be prefixed by datadir location. (default: %s)", MARSBUX_CONF_FILENAME), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-datadir=<dir>", "Specify data directory", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-generate", strprintf("Generate blocks immediately, equivalent to RPC generatenewaddress followed by RPC generatetoaddress. Optional positional integer arguments are number of blocks to generate (default: %s) and maximum iterations to try (default: %s), equivalent to RPC generatetoaddress nblocks and maxtries arguments. Example: litecoin-cli -generate 4 1000", DEFAULT_NBLOCKS, DEFAULT_MAX_TRIES), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     argsman.AddArg("-getinfo", "Get general information from the remote server. Note that unlike server-side RPC calls, the results of -getinfo is the result of multiple non-atomic requests. Some entries in the result may represent results from different states (e.g. wallet balance may be as of a different block from the chain state reported)", ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
@@ -614,7 +614,7 @@ static UniValue CallRPC(BaseRequestHandler* rh, const std::string& strMethod, co
         if (failedToGetAuthCookie) {
             throw std::runtime_error(strprintf(
                 "Could not locate RPC credentials. No authentication cookie could be found, and RPC password is not set.  See -rpcpassword and -stdinrpcpass.  Configuration file: (%s)",
-                GetConfigFile(gArgs.GetArg("-conf", BITCOIN_CONF_FILENAME)).string()));
+                GetConfigFile(gArgs.GetArg("-conf", MARSBUX_CONF_FILENAME)).string()));
         } else {
             throw std::runtime_error("Authorization failed: Incorrect rpcuser or rpcpassword");
         }
@@ -652,7 +652,7 @@ static UniValue ConnectAndCallRPC(BaseRequestHandler* rh, const std::string& str
         try {
             response = CallRPC(rh, strMethod, args, rpcwallet);
             if (fWait) {
-                const UniValue& error = find_value(response, "error");
+                const UniValue error = find_value(response, "error");
                 if (!error.isNull() && error["code"].get_int() == RPC_IN_WARMUP) {
                     throw CConnectionFailed("server in warmup");
                 }
@@ -680,8 +680,8 @@ static void ParseResult(const UniValue& result, std::string& strPrint)
 static void ParseError(const UniValue& error, std::string& strPrint, int& nRet)
 {
     if (error.isObject()) {
-        const UniValue& err_code = find_value(error, "code");
-        const UniValue& err_msg = find_value(error, "message");
+        const UniValue err_code = find_value(error, "code");
+        const UniValue err_msg = find_value(error, "message");
         if (!err_code.isNull()) {
             strPrint = "error code: " + err_code.getValStr() + "\n";
         }
@@ -708,14 +708,14 @@ static void GetWalletBalances(UniValue& result)
     DefaultRequestHandler rh;
     const UniValue listwallets = ConnectAndCallRPC(&rh, "listwallets", /* args=*/{});
     if (!find_value(listwallets, "error").isNull()) return;
-    const UniValue& wallets = find_value(listwallets, "result");
+    const UniValue wallets = find_value(listwallets, "result");
     if (wallets.size() <= 1) return;
 
     UniValue balances(UniValue::VOBJ);
     for (const UniValue& wallet : wallets.getValues()) {
         const std::string wallet_name = wallet.get_str();
         const UniValue getbalances = ConnectAndCallRPC(&rh, "getbalances", /* args=*/{}, wallet_name);
-        const UniValue& balance = find_value(getbalances, "result")["mine"]["trusted"];
+        const UniValue balance = find_value(getbalances, "result")["mine"]["trusted"];
         balances.pushKV(wallet_name, balance);
     }
     result.pushKV("balances", balances);
@@ -811,7 +811,7 @@ static int CommandLineRPC(int argc, char *argv[])
             rh.reset(new NetinfoRequestHandler());
         } else if (gArgs.GetBoolArg("-generate", false)) {
             const UniValue getnewaddress{GetNewAddress()};
-            const UniValue& error{find_value(getnewaddress, "error")};
+            const UniValue error{find_value(getnewaddress, "error")};
             if (error.isNull()) {
                 SetGenerateToAddressArgs(find_value(getnewaddress, "result").get_str(), args);
                 rh.reset(new GenerateToAddressRequestHandler());
@@ -834,7 +834,7 @@ static int CommandLineRPC(int argc, char *argv[])
 
             // Parse reply
             UniValue result = find_value(reply, "result");
-            const UniValue& error = find_value(reply, "error");
+            const UniValue error = find_value(reply, "error");
             if (error.isNull()) {
                 if (gArgs.IsArgSet("-getinfo") && !gArgs.IsArgSet("-rpcwallet")) {
                     GetWalletBalances(result); // fetch multiwallet balances and append to result

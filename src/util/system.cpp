@@ -71,7 +71,7 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char * const marsbux_CONF_FILENAME = "marsbux.conf";
+const char * const MARSBUX_CONF_FILENAME = "marsbux.conf";
 const char * const marsbux_SETTINGS_FILENAME = "settings.json";
 
 ArgsManager gArgs;
@@ -850,7 +850,7 @@ bool ArgsManager::ReadConfigFiles(std::string& error, bool ignore_invalid_keys)
         m_config_sections.clear();
     }
 
-    const std::string confPath = GetArg("-conf", marsbux_CONF_FILENAME);
+    const std::string confPath = GetArg("-conf", MARSBUX_CONF_FILENAME);
     fsbridge::ifstream stream(GetConfigFile(confPath));
 
     // ok to not have a config file

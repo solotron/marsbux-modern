@@ -1,4 +1,4 @@
-Name "marsbux Core (64-bit)"
+Name "Marsbux Core (64-bit)"
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
@@ -10,7 +10,7 @@ SetDateSave off
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define COMPANY "marsbux Core project"
+!define COMPANY "Marsbux Core project"
 !define URL https://marsbux.org/
 
 # MUI Symbol Definitions
@@ -23,7 +23,7 @@ SetDateSave off
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER "marsbux Core"
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "Marsbux Core"
 !define MUI_FINISHPAGE_RUN "$WINDIR\explorer.exe"
 !define MUI_FINISHPAGE_RUN_PARAMETERS $INSTDIR\marsbux-qt
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
@@ -57,13 +57,13 @@ XPStyle on
 BrandingText " "
 ShowInstDetails show
 VIProductVersion 0.21.4.0
-VIAddVersionKey ProductName "marsbux Core"
+VIAddVersionKey ProductName "Marsbux Core"
 VIAddVersionKey ProductVersion "0.21.4"
 VIAddVersionKey CompanyName "${COMPANY}"
 VIAddVersionKey CompanyWebsite "${URL}"
 VIAddVersionKey FileVersion "0.21.4"
-VIAddVersionKey FileDescription "Installer for marsbux Core"
-VIAddVersionKey LegalCopyright "Copyright (C) 2009-2024 The marsbux Core developers"
+VIAddVersionKey FileDescription "Installer for Marsbux Core"
+VIAddVersionKey LegalCopyright "Copyright (C) 2009-2026 The Marsbux Core developers"
 InstallDirRegKey HKCU "${REGKEY}" Path
 ShowUninstDetails show
 
@@ -92,7 +92,7 @@ Section -post SEC0001
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\marsbux-qt
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\marsbux Core (testnet, 64-bit).lnk" "$INSTDIR\marsbux-qt" "-testnet" "$INSTDIR\marsbux-qt" 1
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Marsbux Core (testnet, 64-bit).lnk" "$INSTDIR\marsbux-qt" "-testnet" "$INSTDIR\marsbux-qt" 1
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
@@ -103,10 +103,10 @@ Section -post SEC0001
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" UninstallString $INSTDIR\uninstall.exe
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoModify 1
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
-    WriteRegStr HKCR "marsbux" "URL Protocol" ""
-    WriteRegStr HKCR "marsbux" "" "URL:marsbux"
-    WriteRegStr HKCR "marsbux\DefaultIcon" "" $INSTDIR\marsbux-qt
-    WriteRegStr HKCR "marsbux\shell\open\command" "" '"$INSTDIR\marsbux-qt" "%1"'
+    WriteRegStr HKCR "Marsbux" "URL Protocol" ""
+    WriteRegStr HKCR "Marsbux" "" "URL:marsbux"
+    WriteRegStr HKCR "Marsbux\DefaultIcon" "" $INSTDIR\marsbux-qt
+    WriteRegStr HKCR "Marsbux\shell\open\command" "" '"$INSTDIR\marsbux-qt" "%1"'
 SectionEnd
 
 # Macro for selecting uninstaller sections
@@ -136,7 +136,7 @@ Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\marsbux Core (testnet, 64-bit).lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Marsbux Core (testnet, 64-bit).lnk"
     Delete /REBOOTOK "$SMSTARTUP\marsbux.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
@@ -145,7 +145,7 @@ Section -un.post UNSEC0001
     DeleteRegValue HKCU "${REGKEY}" Path
     DeleteRegKey /IfEmpty HKCU "${REGKEY}\Components"
     DeleteRegKey /IfEmpty HKCU "${REGKEY}"
-    DeleteRegKey HKCR "marsbux"
+    DeleteRegKey HKCR "Marsbux"
     RmDir /REBOOTOK $SMPROGRAMS\$StartMenuGroup
     RmDir /REBOOTOK $INSTDIR
     Push $R0

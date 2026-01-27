@@ -75,10 +75,10 @@ am__make_running_with_option = \
   test $$has_opt = yes
 am__make_dryrun = (target_option=n; $(am__make_running_with_option))
 am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
-pkgdatadir = $(datadir)/marsbux
-pkgincludedir = $(includedir)/marsbux
-pkglibdir = $(libdir)/marsbux
-pkglibexecdir = $(libexecdir)/marsbux
+pkgdatadir = $(datadir)/Marsbux
+pkgincludedir = $(includedir)/Marsbux
+pkglibdir = $(libdir)/Marsbux
+pkglibexecdir = $(libexecdir)/Marsbux
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -108,9 +108,9 @@ am__aclocal_m4_deps = $(top_srcdir)/build-aux/m4/ax_boost_base.m4 \
 	$(top_srcdir)/build-aux/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/build-aux/m4/ax_gcc_func_attribute.m4 \
 	$(top_srcdir)/build-aux/m4/ax_pthread.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_find_bdb48.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_qt.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_subdir_to_include.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_find_bdb48.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_qt.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_subdir_to_include.m4 \
 	$(top_srcdir)/build-aux/m4/l_atomic.m4 \
 	$(top_srcdir)/build-aux/m4/l_socket.m4 \
 	$(top_srcdir)/build-aux/m4/libtool.m4 \
@@ -128,13 +128,12 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/src/config/marsbux-config.h
-CONFIG_CLEAN_FILES = libmarsbuxconsensus.pc share/setup.nsi \
-	share/qt/Info.plist test/config.ini \
-	contrib/devtools/split-debug.sh doc/Doxyfile
+CONFIG_CLEAN_FILES = share/setup.nsi share/qt/Info.plist \
+	test/config.ini contrib/devtools/split-debug.sh doc/Doxyfile
 CONFIG_CLEAN_VPATH_FILES = contrib/devtools/security-check.py \
 	contrib/devtools/test-security-check.py contrib/filter-lcov.py \
 	test/functional/test_runner.py test/fuzz/test_runner.py \
-	test/util/marsbux-util-test.py test/util/rpcauth-test.py
+	test/util/rpcauth-test.py
 SCRIPTS = $(dist_noinst_SCRIPTS)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
@@ -219,7 +218,6 @@ am__define_uniq_tagged_files = \
   done | $(am__uniquify_input)`
 DIST_SUBDIRS = src doc/man
 am__DIST_COMMON = $(srcdir)/Makefile.in \
-	$(srcdir)/libmarsbuxconsensus.pc.in \
 	$(top_srcdir)/build-aux/compile \
 	$(top_srcdir)/build-aux/config.guess \
 	$(top_srcdir)/build-aux/config.sub \
@@ -237,7 +235,6 @@ am__DIST_COMMON = $(srcdir)/Makefile.in \
 	$(top_srcdir)/test/config.ini.in \
 	$(top_srcdir)/test/functional/test_runner.py \
 	$(top_srcdir)/test/fuzz/test_runner.py \
-	$(top_srcdir)/test/util/marsbux-util-test.py \
 	$(top_srcdir)/test/util/rpcauth-test.py COPYING INSTALL.md \
 	README.md build-aux/compile build-aux/config.guess \
 	build-aux/config.sub build-aux/install-sh build-aux/ltmain.sh \
@@ -300,11 +297,6 @@ AWK = gawk
 BDB_CFLAGS = 
 BDB_CPPFLAGS = 
 BDB_LIBS = -ldb_cxx
-marsbux_CLI_NAME = marsbux-cli
-marsbux_DAEMON_NAME = marsbuxd
-marsbux_GUI_NAME = marsbux-qt
-marsbux_TX_NAME = marsbux-tx
-marsbux_WALLET_TOOL_NAME = marsbux-wallet
 BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -pthread -I/usr/include
 BOOST_FILESYSTEM_LIB = -lboost_filesystem
 BOOST_LDFLAGS = -L/usr/lib/x86_64-linux-gnu
@@ -325,9 +317,9 @@ CLIENT_VERSION_MINOR = 21
 CLIENT_VERSION_REVISION = 4
 COMPAT_LDFLAGS = 
 COPYRIGHT_HOLDERS = The %s developers
-COPYRIGHT_HOLDERS_FINAL = The marsbux Core developers
-COPYRIGHT_HOLDERS_SUBSTITUTION = marsbux Core
-COPYRIGHT_YEAR = 2024
+COPYRIGHT_HOLDERS_FINAL = The Marsbux Core developers
+COPYRIGHT_HOLDERS_SUBSTITUTION = Marsbux Core
+COPYRIGHT_YEAR = 2026
 COV_TOOL = 
 COV_TOOL_WRAPPER = 
 CPP = gcc -E
@@ -434,11 +426,11 @@ OBJDUMP = objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
-PACKAGE = marsbux
+PACKAGE = Marsbux
 PACKAGE_BUGREPORT = https://github.com/marsbux-project/marsbux/issues
-PACKAGE_NAME = marsbux Core
-PACKAGE_STRING = marsbux Core 0.21.4
-PACKAGE_TARNAME = marsbux
+PACKAGE_NAME = Marsbux Core
+PACKAGE_STRING = Marsbux Core 0.21.4
+PACKAGE_TARNAME = Marsbux
 PACKAGE_URL = https://marsbux.org/
 PACKAGE_VERSION = 0.21.4
 PATH_SEPARATOR = :
@@ -569,6 +561,11 @@ libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
 mandir = ${datarootdir}/man
+marsbux_CLI_NAME = marsbux-cli
+marsbux_DAEMON_NAME = marsbuxd
+marsbux_GUI_NAME = marsbux-qt
+marsbux_TX_NAME = marsbux-tx
+marsbux_WALLET_TOOL_NAME = marsbux-wallet
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
@@ -762,8 +759,6 @@ $(top_srcdir)/src/config/marsbux-config.h.in:  $(am__configure_deps)
 
 distclean-hdr:
 	-rm -f src/config/marsbux-config.h src/config/stamp-h1
-libmarsbuxconsensus.pc: $(top_builddir)/config.status $(srcdir)/libmarsbuxconsensus.pc.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
 share/setup.nsi: $(top_builddir)/config.status $(top_srcdir)/share/setup.nsi.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 share/qt/Info.plist: $(top_builddir)/config.status $(top_srcdir)/share/qt/Info.plist.in

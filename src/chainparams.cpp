@@ -126,12 +126,31 @@ public:
         m_assumed_chain_state_size = 2;
 
         // genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN); // MarsBux mod - change on next line
-        genesis = CreateGenesisBlock(1496254215, 920754, 0x1e0ffff0, 1, 1000 * COIN); // MarsBux mod - our time, nonce, bits, version, normal reward
+        //genesis = CreateGenesisBlock(1496254215, 920754, 0x1e0ffff0, 1, 1000 * COIN); // MarsBux mod - our time, nonce, bits, version, normal reward
+
+        genesis = CreateGenesisBlock(1496254215, 920754, 0x1e0ffff0, 1, 1 * COIN);
+
+        #include <util/strencodings.h>  // for HexStr if needed
+
+        // Print full genesis details
+        //fprintf(stderr, "Genesis nTime: %u\n", genesis.nTime);
+        //fprintf(stderr, "Genesis nNonce: %u\n", genesis.nNonce);
+        //fprintf(stderr, "Genesis nBits: 0x%08x\n", genesis.nBits);
+        //fprintf(stderr, "Genesis nVersion: %d\n", genesis.nVersion);
+
+        //fprintf(stderr, "Computed Merkle Root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        //fprintf(stderr, "Computed Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
+        //fprintf(stderr, "Expected Genesis Hash: 0x2c890f2275e83be13bbd209cafa234204926454e6442ccf56cae8232ad6124f7\n");
+
         consensus.hashGenesisBlock = genesis.GetHash();
-        // assert(consensus.hashGenesisBlock == uint256S("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2")); // MarsBux mod - changed on next line
+
+        //uint256 computed = genesis.GetHash();
+        //fprintf(stderr, "After GetHash(), Computed genesis hash: %s\n", computed.ToString().c_str());
+        //fprintf(stderr, "After GetHash(), Expected genesis hash: %s\n", consensus.hashGenesisBlock.ToString().c_str());
+
         assert(consensus.hashGenesisBlock == uint256S("0x2c890f2275e83be13bbd209cafa234204926454e6442ccf56cae8232ad6124f7")); // MarsBux mod - use original value
-        // assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9")); // MarsBux mod - changed on next line
-        assert(genesis.hashMerkleRoot == uint256S("c4852904b49089dbf5d70c4db6f57e931068b1f702565a95e55140c0c4afbabc")); // MarsBux mod - Correct from MARS explorer, block 1 (genesis) merkle
+        assert(genesis.hashMerkleRoot == uint256S("f9e54969236a128c349db19427a1f7ca4fcdaccd17cf516eda46336d0bd2d198"));
+
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
         // This is fine at runtime as we'll fall back to using them as an addrfetch if they don't support the
@@ -264,13 +283,28 @@ public:
         m_assumed_blockchain_size = 4;
         m_assumed_chain_state_size = 1;
 
-        //genesis = CreateGenesisBlock(1486949366, 293345, 0x1e0ffff0, 1, 50 * COIN);
-        genesis = CreateGenesisBlock(1496254215, 920754, 0x1e0ffff0, 1, 1000 * COIN); // MarsBux mod - our time, nonce, bits, version,>
+        genesis = CreateGenesisBlock(1388880557, 387006691, 0x1e0ffff0, 1, 1 * COIN); // test MarsBux mod - our time, nonce, bits, version,>
+
+        #include <util/strencodings.h>  // for HexStr if needed
+
+        // Print full genesis details
+        //fprintf(stderr, "TestNet Genesis nTime: %u\n", genesis.nTime);
+        //fprintf(stderr, "TestNet Genesis nNonce: %u\n", genesis.nNonce);
+        //fprintf(stderr, "TestNet Genesis nBits: 0x%08x\n", genesis.nBits);
+        //fprintf(stderr, "TestNet Genesis nVersion: %d\n", genesis.nVersion);
+
+        //fprintf(stderr, "TestNet Computed Merkle Root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        //fprintf(stderr, "TestNet Computed Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
+
         consensus.hashGenesisBlock = genesis.GetHash();
-        // assert(consensus.hashGenesisBlock == uint256S("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2")); // Ma>
-        assert(consensus.hashGenesisBlock == uint256S("0x2c890f2275e83be13bbd209cafa234204926454e6442ccf56cae8232ad6124f7")); // MarsB>
-        // assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9")); // MarsBu>
-        assert(genesis.hashMerkleRoot == uint256S("c4852904b49089dbf5d70c4db6f57e931068b1f702565a95e55140c0c4afbabc")); // MarsBux mod>
+
+        //uint256 computed = genesis.GetHash();
+        //fprintf(stderr, "TestNet After GetHash(), Computed genesis hash: %s\n", computed.ToString().c_str());
+        //fprintf(stderr, "TestNet After GetHash(), Expected genesis hash: %s\n", consensus.hashGenesisBlock.ToString().c_str());
+
+        assert(consensus.hashGenesisBlock == uint256S("c9493faf5766fc1138d5d734dcfe1300293f0b55719984eebb2ecab3879b1a17"));
+        assert(genesis.hashMerkleRoot == uint256S("f9e54969236a128c349db19427a1f7ca4fcdaccd17cf516eda46336d0bd2d198"));
+
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
@@ -371,10 +405,32 @@ public:
 
         UpdateActivationParametersFromArgs(args);
 
-        genesis = CreateGenesisBlock(1296688602, 0, 0x207fffff, 1, 50 * COIN);
+        //genesis = CreateGenesisBlock(1296688602, 0, 0x207fffff, 1, 50 * COIN);
+        //consensus.hashGenesisBlock = genesis.GetHash();
+        //assert(consensus.hashGenesisBlock == uint256S("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
+        //assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+
+        genesis = CreateGenesisBlock(1388880557, 387006691, 0x1e0ffff0, 1, 1 * COIN); // test MarsBux mod - our time, nonce, bits, version,>
+
+        #include <util/strencodings.h>  // for HexStr if needed
+
+        // Print full genesis details
+        //fprintf(stderr, "RegTest Genesis nTime: %u\n", genesis.nTime);
+        //fprintf(stderr, "RegTest Genesis nNonce: %u\n", genesis.nNonce);
+        //fprintf(stderr, "RegTest Genesis nBits: 0x%08x\n", genesis.nBits);
+        //fprintf(stderr, "RegTest Genesis nVersion: %d\n", genesis.nVersion);
+
+        //fprintf(stderr, "RegTest Computed Merkle Root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        //fprintf(stderr, "RegTest Computed Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
+
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+
+        //uint256 computed = genesis.GetHash();
+        //fprintf(stderr, "RegTest After GetHash(), Computed genesis hash: %s\n", computed.ToString().c_str());
+        //fprintf(stderr, "RegTest After GetHash(), Expected genesis hash: %s\n", consensus.hashGenesisBlock.ToString().c_str());
+
+        assert(consensus.hashGenesisBlock == uint256S("c9493faf5766fc1138d5d734dcfe1300293f0b55719984eebb2ecab3879b1a17"));
+        assert(genesis.hashMerkleRoot == uint256S("f9e54969236a128c349db19427a1f7ca4fcdaccd17cf516eda46336d0bd2d198"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.

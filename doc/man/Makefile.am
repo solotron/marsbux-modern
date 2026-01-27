@@ -21,3 +21,6 @@ if BUILD_marsbux_WALLET
   dist_man1_MANS+=marsbux-wallet.1
 endif
 endif
+
+dist_man1_MANS = marsbuxd.1 marsbux-cli.1 marsbux-tx.1 marsbux-wallet.1
+

@@ -106,9 +106,9 @@ am__aclocal_m4_deps = $(top_srcdir)/build-aux/m4/ax_boost_base.m4 \
 	$(top_srcdir)/build-aux/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/build-aux/m4/ax_gcc_func_attribute.m4 \
 	$(top_srcdir)/build-aux/m4/ax_pthread.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_find_bdb48.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_qt.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_subdir_to_include.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_find_bdb48.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_qt.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_subdir_to_include.m4 \
 	$(top_srcdir)/build-aux/m4/l_atomic.m4 \
 	$(top_srcdir)/build-aux/m4/l_socket.m4 \
 	$(top_srcdir)/build-aux/m4/libtool.m4 \
@@ -191,11 +191,6 @@ AWK = gawk
 BDB_CFLAGS = 
 BDB_CPPFLAGS = 
 BDB_LIBS = -ldb_cxx
-marsbux_CLI_NAME = marsbux-cli
-marsbux_DAEMON_NAME = marsbuxd
-marsbux_GUI_NAME = marsbux-qt
-marsbux_TX_NAME = marsbux-tx
-marsbux_WALLET_TOOL_NAME = marsbux-wallet
 BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -pthread -I/usr/include
 BOOST_FILESYSTEM_LIB = -lboost_filesystem
 BOOST_LDFLAGS = -L/usr/lib/x86_64-linux-gnu
@@ -460,6 +455,11 @@ libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
 mandir = ${datarootdir}/man
+marsbux_CLI_NAME = marsbux-cli
+marsbux_DAEMON_NAME = marsbuxd
+marsbux_GUI_NAME = marsbux-qt
+marsbux_TX_NAME = marsbux-tx
+marsbux_WALLET_TOOL_NAME = marsbux-wallet
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
@@ -476,8 +476,7 @@ target_alias =
 top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
-dist_man1_MANS = $(am__append_1) $(am__append_2) $(am__append_3) \
-	$(am__append_4) $(am__append_5)
+dist_man1_MANS = marsbuxd.1 marsbux-cli.1 marsbux-tx.1 marsbux-wallet.1
 all: all-am
 
 .SUFFIXES:

@@ -108,10 +108,10 @@ am__make_running_with_option = \
   test $$has_opt = yes
 am__make_dryrun = (target_option=n; $(am__make_running_with_option))
 am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
-pkgdatadir = $(datadir)/marsbux
-pkgincludedir = $(includedir)/marsbux
-pkglibdir = $(libdir)/marsbux
-pkglibexecdir = $(libexecdir)/marsbux
+pkgdatadir = $(datadir)/Marsbux
+pkgincludedir = $(includedir)/Marsbux
+pkglibdir = $(libdir)/Marsbux
+pkglibexecdir = $(libexecdir)/Marsbux
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -240,9 +240,9 @@ am__aclocal_m4_deps = $(top_srcdir)/build-aux/m4/ax_boost_base.m4 \
 	$(top_srcdir)/build-aux/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/build-aux/m4/ax_gcc_func_attribute.m4 \
 	$(top_srcdir)/build-aux/m4/ax_pthread.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_find_bdb48.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_qt.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_subdir_to_include.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_find_bdb48.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_qt.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_subdir_to_include.m4 \
 	$(top_srcdir)/build-aux/m4/l_atomic.m4 \
 	$(top_srcdir)/build-aux/m4/l_socket.m4 \
 	$(top_srcdir)/build-aux/m4/libtool.m4 \
@@ -1557,12 +1557,10 @@ am__DEPENDENCIES_8 = $(LIBmarsbux_WALLET) $(LIBmarsbux_COMMON) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
-marsbux_node_DEPENDENCIES = $(LIBmarsbux_SERVER) \
-	$(am__DEPENDENCIES_8)
-marsbux_node_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
-	$(marsbux_node_CXXFLAGS) $(CXXFLAGS) $(marsbux_node_LDFLAGS) \
-	$(LDFLAGS) -o $@
+marsbux_node_DEPENDENCIES = $(LIBmarsbux_SERVER) $(am__DEPENDENCIES_8)
+marsbux_node_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(marsbux_node_CXXFLAGS) \
+	$(CXXFLAGS) $(marsbux_node_LDFLAGS) $(LDFLAGS) -o $@
 am__marsbux_tx_SOURCES_DIST = marsbux-tx.cpp marsbux-tx-res.rc
 #am__objects_33 = marsbux-tx-res.$(OBJEXT)
 am_marsbux_tx_OBJECTS = marsbux_tx-marsbux-tx.$(OBJEXT) \
@@ -3008,18 +3006,6 @@ test_fuzz_script_assets_test_minimizer_LINK = $(LIBTOOL) $(AM_V_lt) \
 	$(CXXLD) $(test_fuzz_script_assets_test_minimizer_CXXFLAGS) \
 	$(CXXFLAGS) $(test_fuzz_script_assets_test_minimizer_LDFLAGS) \
 	$(LDFLAGS) -o $@
-am__test_fuzz_script_marsbux_consensus_SOURCES_DIST =  \
-	test/fuzz/script_marsbux_consensus.cpp
-##am_test_fuzz_script_marsbux_consensus_OBJECTS = test/fuzz/script_marsbux_consensus-script_marsbux_consensus.$(OBJEXT)
-test_fuzz_script_marsbux_consensus_OBJECTS =  \
-	$(am_test_fuzz_script_marsbux_consensus_OBJECTS)
-##test_fuzz_script_marsbux_consensus_DEPENDENCIES =  \
-##	$(am__DEPENDENCIES_10)
-test_fuzz_script_marsbux_consensus_LINK = $(LIBTOOL) $(AM_V_lt) \
-	--tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link \
-	$(CXXLD) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) \
-	$(CXXFLAGS) $(test_fuzz_script_marsbux_consensus_LDFLAGS) \
-	$(LDFLAGS) -o $@
 am__test_fuzz_script_descriptor_cache_SOURCES_DIST =  \
 	test/fuzz/script_descriptor_cache.cpp
 ##am_test_fuzz_script_descriptor_cache_OBJECTS = test/fuzz/script_descriptor_cache-script_descriptor_cache.$(OBJEXT)
@@ -3063,6 +3049,18 @@ test_fuzz_script_interpreter_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
 	$(test_fuzz_script_interpreter_CXXFLAGS) $(CXXFLAGS) \
 	$(test_fuzz_script_interpreter_LDFLAGS) $(LDFLAGS) -o $@
+am__test_fuzz_script_marsbux_consensus_SOURCES_DIST =  \
+	test/fuzz/script_marsbux_consensus.cpp
+##am_test_fuzz_script_marsbux_consensus_OBJECTS = test/fuzz/script_marsbux_consensus-script_marsbux_consensus.$(OBJEXT)
+test_fuzz_script_marsbux_consensus_OBJECTS =  \
+	$(am_test_fuzz_script_marsbux_consensus_OBJECTS)
+##test_fuzz_script_marsbux_consensus_DEPENDENCIES =  \
+##	$(am__DEPENDENCIES_10)
+test_fuzz_script_marsbux_consensus_LINK = $(LIBTOOL) $(AM_V_lt) \
+	--tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link \
+	$(CXXLD) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) \
+	$(CXXFLAGS) $(test_fuzz_script_marsbux_consensus_LDFLAGS) \
+	$(LDFLAGS) -o $@
 am__test_fuzz_script_ops_SOURCES_DIST = test/fuzz/script_ops.cpp
 ##am_test_fuzz_script_ops_OBJECTS = test/fuzz/script_ops-script_ops.$(OBJEXT)
 test_fuzz_script_ops_OBJECTS = $(am_test_fuzz_script_ops_OBJECTS)
@@ -3902,11 +3900,6 @@ am__depfiles_remade = ./$(DEPDIR)/libmarsbux_common_a-base58.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-addresstablemodel.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-askpassphrasedialog.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-bantablemodel.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-marsbux.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxaddressvalidator.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxamountfield.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxgui.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxunits.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-clientmodel.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-coincontroldialog.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-coincontroltreewidget.Po \
@@ -3918,15 +3911,15 @@ am__depfiles_remade = ./$(DEPDIR)/libmarsbux_common_a-base58.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-macdockiconhandler.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-macnotificationhandler.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-macos_appnap.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-marsbux.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxaddressvalidator.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxamountfield.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxgui.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxunits.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_addressbookpage.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_addresstablemodel.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_askpassphrasedialog.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_bantablemodel.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbux.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxaddressvalidator.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxamountfield.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxgui.Po \
-	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxunits.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_clientmodel.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_coincontroldialog.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_coincontroltreewidget.Po \
@@ -3937,6 +3930,11 @@ am__depfiles_remade = ./$(DEPDIR)/libmarsbux_common_a-base58.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_intro.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_macdockiconhandler.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_macnotificationhandler.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbux.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxaddressvalidator.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxamountfield.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxgui.Po \
+	qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxunits.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_modaloverlay.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_notificator.Po \
 	qt/$(DEPDIR)/libmarsbuxqt_a-moc_openuridialog.Po \
@@ -4037,13 +4035,13 @@ am__depfiles_remade = ./$(DEPDIR)/libmarsbux_common_a-base58.Po \
 	script/$(DEPDIR)/libmarsbux_common_a-sign.Po \
 	script/$(DEPDIR)/libmarsbux_common_a-signingprovider.Po \
 	script/$(DEPDIR)/libmarsbux_common_a-standard.Po \
-	script/$(DEPDIR)/libmarsbux_consensus_a-marsbuxconsensus.Po \
 	script/$(DEPDIR)/libmarsbux_consensus_a-interpreter.Po \
+	script/$(DEPDIR)/libmarsbux_consensus_a-marsbuxconsensus.Po \
 	script/$(DEPDIR)/libmarsbux_consensus_a-script.Po \
 	script/$(DEPDIR)/libmarsbux_consensus_a-script_error.Po \
 	script/$(DEPDIR)/libmarsbux_server_a-sigcache.Po \
-	script/$(DEPDIR)/libmarsbuxconsensus_la-marsbuxconsensus.Plo \
 	script/$(DEPDIR)/libmarsbuxconsensus_la-interpreter.Plo \
+	script/$(DEPDIR)/libmarsbuxconsensus_la-marsbuxconsensus.Plo \
 	script/$(DEPDIR)/libmarsbuxconsensus_la-script.Plo \
 	script/$(DEPDIR)/libmarsbuxconsensus_la-script_error.Plo \
 	support/$(DEPDIR)/libmarsbux_util_a-cleanse.Po \
@@ -4256,11 +4254,11 @@ am__depfiles_remade = ./$(DEPDIR)/libmarsbux_common_a-base58.Po \
 	test/fuzz/$(DEPDIR)/rolling_bloom_filter-rolling_bloom_filter.Po \
 	test/fuzz/$(DEPDIR)/script-script.Po \
 	test/fuzz/$(DEPDIR)/script_assets_test_minimizer-script_assets_test_minimizer.Po \
-	test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po \
 	test/fuzz/$(DEPDIR)/script_descriptor_cache-script_descriptor_cache.Po \
 	test/fuzz/$(DEPDIR)/script_deserialize-deserialize.Po \
 	test/fuzz/$(DEPDIR)/script_flags-script_flags.Po \
 	test/fuzz/$(DEPDIR)/script_interpreter-script_interpreter.Po \
+	test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po \
 	test/fuzz/$(DEPDIR)/script_ops-script_ops.Po \
 	test/fuzz/$(DEPDIR)/script_sigcache-script_sigcache.Po \
 	test/fuzz/$(DEPDIR)/script_sign-script_sign.Po \
@@ -4546,11 +4544,11 @@ SOURCES = $(crc32c_libcrc32c_a_SOURCES) \
 	$(test_fuzz_rolling_bloom_filter_SOURCES) \
 	$(test_fuzz_script_SOURCES) \
 	$(test_fuzz_script_assets_test_minimizer_SOURCES) \
-	$(test_fuzz_script_marsbux_consensus_SOURCES) \
 	$(test_fuzz_script_descriptor_cache_SOURCES) \
 	$(test_fuzz_script_deserialize_SOURCES) \
 	$(test_fuzz_script_flags_SOURCES) \
 	$(test_fuzz_script_interpreter_SOURCES) \
+	$(test_fuzz_script_marsbux_consensus_SOURCES) \
 	$(test_fuzz_script_ops_SOURCES) \
 	$(test_fuzz_script_sigcache_SOURCES) \
 	$(test_fuzz_script_sign_SOURCES) \
@@ -4600,8 +4598,7 @@ DIST_SOURCES = $(am__crc32c_libcrc32c_a_SOURCES_DIST) \
 	$(am__marsbux_node_SOURCES_DIST) \
 	$(am__marsbux_tx_SOURCES_DIST) \
 	$(am__marsbux_wallet_SOURCES_DIST) \
-	$(am__marsbuxd_SOURCES_DIST) \
-	$(am__qt_marsbux_qt_SOURCES_DIST) \
+	$(am__marsbuxd_SOURCES_DIST) $(am__qt_marsbux_qt_SOURCES_DIST) \
 	$(am__qt_test_test_marsbux_qt_SOURCES_DIST) \
 	$(am__test_fuzz_addition_overflow_SOURCES_DIST) \
 	$(am__test_fuzz_addr_info_deserialize_SOURCES_DIST) \
@@ -4728,11 +4725,11 @@ DIST_SOURCES = $(am__crc32c_libcrc32c_a_SOURCES_DIST) \
 	$(am__test_fuzz_rolling_bloom_filter_SOURCES_DIST) \
 	$(am__test_fuzz_script_SOURCES_DIST) \
 	$(am__test_fuzz_script_assets_test_minimizer_SOURCES_DIST) \
-	$(am__test_fuzz_script_marsbux_consensus_SOURCES_DIST) \
 	$(am__test_fuzz_script_descriptor_cache_SOURCES_DIST) \
 	$(am__test_fuzz_script_deserialize_SOURCES_DIST) \
 	$(am__test_fuzz_script_flags_SOURCES_DIST) \
 	$(am__test_fuzz_script_interpreter_SOURCES_DIST) \
+	$(am__test_fuzz_script_marsbux_consensus_SOURCES_DIST) \
 	$(am__test_fuzz_script_ops_SOURCES_DIST) \
 	$(am__test_fuzz_script_sigcache_SOURCES_DIST) \
 	$(am__test_fuzz_script_sign_SOURCES_DIST) \
@@ -5029,11 +5026,6 @@ AWK = gawk
 BDB_CFLAGS = 
 BDB_CPPFLAGS = 
 BDB_LIBS = -ldb_cxx
-marsbux_CLI_NAME = marsbux-cli
-marsbux_DAEMON_NAME = marsbuxd
-marsbux_GUI_NAME = marsbux-qt
-marsbux_TX_NAME = marsbux-tx
-marsbux_WALLET_TOOL_NAME = marsbux-wallet
 BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -pthread -I/usr/include
 BOOST_FILESYSTEM_LIB = -lboost_filesystem
 BOOST_LDFLAGS = -L/usr/lib/x86_64-linux-gnu
@@ -5054,9 +5046,9 @@ CLIENT_VERSION_MINOR = 21
 CLIENT_VERSION_REVISION = 4
 COMPAT_LDFLAGS = 
 COPYRIGHT_HOLDERS = The %s developers
-COPYRIGHT_HOLDERS_FINAL = The marsbux Core developers
-COPYRIGHT_HOLDERS_SUBSTITUTION = marsbux Core
-COPYRIGHT_YEAR = 2024
+COPYRIGHT_HOLDERS_FINAL = The Marsbux Core developers
+COPYRIGHT_HOLDERS_SUBSTITUTION = Marsbux Core
+COPYRIGHT_YEAR = 2026
 COV_TOOL = 
 COV_TOOL_WRAPPER = 
 CPP = gcc -E
@@ -5163,11 +5155,11 @@ OBJDUMP = objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
-PACKAGE = marsbux
+PACKAGE = Marsbux
 PACKAGE_BUGREPORT = https://github.com/marsbux-project/marsbux/issues
-PACKAGE_NAME = marsbux Core
-PACKAGE_STRING = marsbux Core 0.21.4
-PACKAGE_TARNAME = marsbux
+PACKAGE_NAME = Marsbux Core
+PACKAGE_STRING = Marsbux Core 0.21.4
+PACKAGE_TARNAME = Marsbux
 PACKAGE_URL = https://marsbux.org/
 PACKAGE_VERSION = 0.21.4
 PATH_SEPARATOR = :
@@ -5298,6 +5290,11 @@ libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
 mandir = ${datarootdir}/man
+marsbux_CLI_NAME = marsbux-cli
+marsbux_DAEMON_NAME = marsbuxd
+marsbux_GUI_NAME = marsbux-qt
+marsbux_TX_NAME = marsbux-tx
+marsbux_WALLET_TOOL_NAME = marsbux-wallet
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
@@ -7608,11 +7605,11 @@ libtest_fuzz_a_SOURCES = \
 #	qt/test/uritests.cpp qt/test/util.cpp \
 #	$(TEST_QT_H) $(am__append_66)
 #nodist_qt_test_test_marsbux_qt_SOURCES = $(TEST_QT_MOC_CPP)
-#qt_test_test_marsbux_qt_LDADD =  \
-#	$(LIBmarsbuxQT) $(LIBmarsbux_SERVER) \
-#	$(LIBTEST_UTIL) $(am__append_67) \
-#	$(am__append_68) $(LIBmarsbux_CLI) \
-#	$(LIBmarsbux_COMMON) $(LIBmarsbux_UTIL) \
+#qt_test_test_marsbux_qt_LDADD = $(LIBmarsbuxQT) \
+#	$(LIBmarsbux_SERVER) $(LIBTEST_UTIL) \
+#	$(am__append_67) $(am__append_68) \
+#	$(LIBmarsbux_CLI) $(LIBmarsbux_COMMON) \
+#	$(LIBmarsbux_UTIL) \
 #	$(LIBmarsbux_CONSENSUS) \
 #	$(LIBmarsbux_CRYPTO) $(LIBUNIVALUE) \
 #	$(LIBLEVELDB) $(LIBLEVELDB_SSE42) \
@@ -8846,16 +8843,16 @@ bench/bench_marsbux-checkqueue.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-data.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
-bench/bench_marsbux-duplicate_inputs.$(OBJEXT):  \
-	bench/$(am__dirstamp) bench/$(DEPDIR)/$(am__dirstamp)
+bench/bench_marsbux-duplicate_inputs.$(OBJEXT): bench/$(am__dirstamp) \
+	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-examples.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-rollingbloom.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-chacha20.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
-bench/bench_marsbux-chacha_poly_aead.$(OBJEXT):  \
-	bench/$(am__dirstamp) bench/$(DEPDIR)/$(am__dirstamp)
+bench/bench_marsbux-chacha_poly_aead.$(OBJEXT): bench/$(am__dirstamp) \
+	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-crypto_hash.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-ccoins_caching.$(OBJEXT): bench/$(am__dirstamp) \
@@ -8866,8 +8863,8 @@ bench/bench_marsbux-hashpadding.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-merkle_root.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
-bench/bench_marsbux-mempool_eviction.$(OBJEXT):  \
-	bench/$(am__dirstamp) bench/$(DEPDIR)/$(am__dirstamp)
+bench/bench_marsbux-mempool_eviction.$(OBJEXT): bench/$(am__dirstamp) \
+	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-mempool_stress.$(OBJEXT): bench/$(am__dirstamp) \
 	bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_marsbux-nanobench.$(OBJEXT): bench/$(am__dirstamp) \
@@ -9735,12 +9732,6 @@ test/fuzz/script_assets_test_minimizer-script_assets_test_minimizer.$(OBJEXT):  
 test/fuzz/script_assets_test_minimizer$(EXEEXT): $(test_fuzz_script_assets_test_minimizer_OBJECTS) $(test_fuzz_script_assets_test_minimizer_DEPENDENCIES) $(EXTRA_test_fuzz_script_assets_test_minimizer_DEPENDENCIES) test/fuzz/$(am__dirstamp)
 	@rm -f test/fuzz/script_assets_test_minimizer$(EXEEXT)
 	$(AM_V_CXXLD)$(test_fuzz_script_assets_test_minimizer_LINK) $(test_fuzz_script_assets_test_minimizer_OBJECTS) $(test_fuzz_script_assets_test_minimizer_LDADD) $(LIBS)
-test/fuzz/script_marsbux_consensus-script_marsbux_consensus.$(OBJEXT):  \
-	test/fuzz/$(am__dirstamp) test/fuzz/$(DEPDIR)/$(am__dirstamp)
-
-test/fuzz/script_marsbux_consensus$(EXEEXT): $(test_fuzz_script_marsbux_consensus_OBJECTS) $(test_fuzz_script_marsbux_consensus_DEPENDENCIES) $(EXTRA_test_fuzz_script_marsbux_consensus_DEPENDENCIES) test/fuzz/$(am__dirstamp)
-	@rm -f test/fuzz/script_marsbux_consensus$(EXEEXT)
-	$(AM_V_CXXLD)$(test_fuzz_script_marsbux_consensus_LINK) $(test_fuzz_script_marsbux_consensus_OBJECTS) $(test_fuzz_script_marsbux_consensus_LDADD) $(LIBS)
 test/fuzz/script_descriptor_cache-script_descriptor_cache.$(OBJEXT):  \
 	test/fuzz/$(am__dirstamp) test/fuzz/$(DEPDIR)/$(am__dirstamp)
 
@@ -9765,6 +9756,12 @@ test/fuzz/script_interpreter-script_interpreter.$(OBJEXT):  \
 test/fuzz/script_interpreter$(EXEEXT): $(test_fuzz_script_interpreter_OBJECTS) $(test_fuzz_script_interpreter_DEPENDENCIES) $(EXTRA_test_fuzz_script_interpreter_DEPENDENCIES) test/fuzz/$(am__dirstamp)
 	@rm -f test/fuzz/script_interpreter$(EXEEXT)
 	$(AM_V_CXXLD)$(test_fuzz_script_interpreter_LINK) $(test_fuzz_script_interpreter_OBJECTS) $(test_fuzz_script_interpreter_LDADD) $(LIBS)
+test/fuzz/script_marsbux_consensus-script_marsbux_consensus.$(OBJEXT):  \
+	test/fuzz/$(am__dirstamp) test/fuzz/$(DEPDIR)/$(am__dirstamp)
+
+test/fuzz/script_marsbux_consensus$(EXEEXT): $(test_fuzz_script_marsbux_consensus_OBJECTS) $(test_fuzz_script_marsbux_consensus_DEPENDENCIES) $(EXTRA_test_fuzz_script_marsbux_consensus_DEPENDENCIES) test/fuzz/$(am__dirstamp)
+	@rm -f test/fuzz/script_marsbux_consensus$(EXEEXT)
+	$(AM_V_CXXLD)$(test_fuzz_script_marsbux_consensus_LINK) $(test_fuzz_script_marsbux_consensus_OBJECTS) $(test_fuzz_script_marsbux_consensus_LDADD) $(LIBS)
 test/fuzz/script_ops-script_ops.$(OBJEXT): test/fuzz/$(am__dirstamp) \
 	test/fuzz/$(DEPDIR)/$(am__dirstamp)
 
@@ -9959,8 +9956,8 @@ libmw/test/framework/src/models/$(DEPDIR)/$(am__dirstamp):
 libmw/test/framework/src/models/test_test_marsbux-Tx.$(OBJEXT):  \
 	libmw/test/framework/src/models/$(am__dirstamp) \
 	libmw/test/framework/src/models/$(DEPDIR)/$(am__dirstamp)
-test/test_marsbux-arith_uint256_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_marsbux-arith_uint256_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_marsbux-addrman_tests.$(OBJEXT): test/$(am__dirstamp) \
 	test/$(DEPDIR)/$(am__dirstamp)
 test/test_marsbux-amount_tests.$(OBJEXT): test/$(am__dirstamp) \
@@ -10659,11 +10656,6 @@ include qt/$(DEPDIR)/libmarsbuxqt_a-addressbookpage.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-addresstablemodel.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-askpassphrasedialog.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-bantablemodel.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-marsbux.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxaddressvalidator.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxamountfield.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxgui.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxunits.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-clientmodel.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-coincontroldialog.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-coincontroltreewidget.Po # am--include-marker
@@ -10675,15 +10667,15 @@ include qt/$(DEPDIR)/libmarsbuxqt_a-intro.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-macdockiconhandler.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-macnotificationhandler.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-macos_appnap.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-marsbux.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxaddressvalidator.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxamountfield.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxgui.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxunits.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_addressbookpage.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_addresstablemodel.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_askpassphrasedialog.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_bantablemodel.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbux.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxaddressvalidator.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxamountfield.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxgui.Po # am--include-marker
-include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxunits.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_clientmodel.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_coincontroldialog.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_coincontroltreewidget.Po # am--include-marker
@@ -10694,6 +10686,11 @@ include qt/$(DEPDIR)/libmarsbuxqt_a-moc_guiutil.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_intro.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_macdockiconhandler.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_macnotificationhandler.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbux.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxaddressvalidator.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxamountfield.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxgui.Po # am--include-marker
+include qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxunits.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_modaloverlay.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_notificator.Po # am--include-marker
 include qt/$(DEPDIR)/libmarsbuxqt_a-moc_openuridialog.Po # am--include-marker
@@ -10794,13 +10791,13 @@ include script/$(DEPDIR)/libmarsbux_common_a-descriptor.Po # am--include-marker
 include script/$(DEPDIR)/libmarsbux_common_a-sign.Po # am--include-marker
 include script/$(DEPDIR)/libmarsbux_common_a-signingprovider.Po # am--include-marker
 include script/$(DEPDIR)/libmarsbux_common_a-standard.Po # am--include-marker
-include script/$(DEPDIR)/libmarsbux_consensus_a-marsbuxconsensus.Po # am--include-marker
 include script/$(DEPDIR)/libmarsbux_consensus_a-interpreter.Po # am--include-marker
+include script/$(DEPDIR)/libmarsbux_consensus_a-marsbuxconsensus.Po # am--include-marker
 include script/$(DEPDIR)/libmarsbux_consensus_a-script.Po # am--include-marker
 include script/$(DEPDIR)/libmarsbux_consensus_a-script_error.Po # am--include-marker
 include script/$(DEPDIR)/libmarsbux_server_a-sigcache.Po # am--include-marker
-include script/$(DEPDIR)/libmarsbuxconsensus_la-marsbuxconsensus.Plo # am--include-marker
 include script/$(DEPDIR)/libmarsbuxconsensus_la-interpreter.Plo # am--include-marker
+include script/$(DEPDIR)/libmarsbuxconsensus_la-marsbuxconsensus.Plo # am--include-marker
 include script/$(DEPDIR)/libmarsbuxconsensus_la-script.Plo # am--include-marker
 include script/$(DEPDIR)/libmarsbuxconsensus_la-script_error.Plo # am--include-marker
 include support/$(DEPDIR)/libmarsbux_util_a-cleanse.Po # am--include-marker
@@ -11013,11 +11010,11 @@ include test/fuzz/$(DEPDIR)/rbf-rbf.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/rolling_bloom_filter-rolling_bloom_filter.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script-script.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script_assets_test_minimizer-script_assets_test_minimizer.Po # am--include-marker
-include test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script_descriptor_cache-script_descriptor_cache.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script_deserialize-deserialize.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script_flags-script_flags.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script_interpreter-script_interpreter.Po # am--include-marker
+include test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script_ops-script_ops.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script_sigcache-script_sigcache.Po # am--include-marker
 include test/fuzz/$(DEPDIR)/script_sign-script_sign.Po # am--include-marker
@@ -19132,20 +19129,6 @@ test/fuzz/script_assets_test_minimizer-script_assets_test_minimizer.obj: test/fu
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_assets_test_minimizer_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_assets_test_minimizer_CXXFLAGS) $(CXXFLAGS) -c -o test/fuzz/script_assets_test_minimizer-script_assets_test_minimizer.obj `if test -f 'test/fuzz/script_assets_test_minimizer.cpp'; then $(CYGPATH_W) 'test/fuzz/script_assets_test_minimizer.cpp'; else $(CYGPATH_W) '$(srcdir)/test/fuzz/script_assets_test_minimizer.cpp'; fi`
 
-test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o: test/fuzz/script_marsbux_consensus.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_marsbux_consensus_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) $(CXXFLAGS) -MT test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o -MD -MP -MF test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Tpo -c -o test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o `test -f 'test/fuzz/script_marsbux_consensus.cpp' || echo '$(srcdir)/'`test/fuzz/script_marsbux_consensus.cpp
-	$(AM_V_at)$(am__mv) test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Tpo test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po
-#	$(AM_V_CXX)source='test/fuzz/script_marsbux_consensus.cpp' object='test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_marsbux_consensus_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) $(CXXFLAGS) -c -o test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o `test -f 'test/fuzz/script_marsbux_consensus.cpp' || echo '$(srcdir)/'`test/fuzz/script_marsbux_consensus.cpp
-
-test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj: test/fuzz/script_marsbux_consensus.cpp
-	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_marsbux_consensus_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) $(CXXFLAGS) -MT test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj -MD -MP -MF test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Tpo -c -o test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj `if test -f 'test/fuzz/script_marsbux_consensus.cpp'; then $(CYGPATH_W) 'test/fuzz/script_marsbux_consensus.cpp'; else $(CYGPATH_W) '$(srcdir)/test/fuzz/script_marsbux_consensus.cpp'; fi`
-	$(AM_V_at)$(am__mv) test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Tpo test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po
-#	$(AM_V_CXX)source='test/fuzz/script_marsbux_consensus.cpp' object='test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_marsbux_consensus_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) $(CXXFLAGS) -c -o test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj `if test -f 'test/fuzz/script_marsbux_consensus.cpp'; then $(CYGPATH_W) 'test/fuzz/script_marsbux_consensus.cpp'; else $(CYGPATH_W) '$(srcdir)/test/fuzz/script_marsbux_consensus.cpp'; fi`
-
 test/fuzz/script_descriptor_cache-script_descriptor_cache.o: test/fuzz/script_descriptor_cache.cpp
 	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_descriptor_cache_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_descriptor_cache_CXXFLAGS) $(CXXFLAGS) -MT test/fuzz/script_descriptor_cache-script_descriptor_cache.o -MD -MP -MF test/fuzz/$(DEPDIR)/script_descriptor_cache-script_descriptor_cache.Tpo -c -o test/fuzz/script_descriptor_cache-script_descriptor_cache.o `test -f 'test/fuzz/script_descriptor_cache.cpp' || echo '$(srcdir)/'`test/fuzz/script_descriptor_cache.cpp
 	$(AM_V_at)$(am__mv) test/fuzz/$(DEPDIR)/script_descriptor_cache-script_descriptor_cache.Tpo test/fuzz/$(DEPDIR)/script_descriptor_cache-script_descriptor_cache.Po
@@ -19201,6 +19184,20 @@ test/fuzz/script_interpreter-script_interpreter.obj: test/fuzz/script_interprete
 #	$(AM_V_CXX)source='test/fuzz/script_interpreter.cpp' object='test/fuzz/script_interpreter-script_interpreter.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_interpreter_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_interpreter_CXXFLAGS) $(CXXFLAGS) -c -o test/fuzz/script_interpreter-script_interpreter.obj `if test -f 'test/fuzz/script_interpreter.cpp'; then $(CYGPATH_W) 'test/fuzz/script_interpreter.cpp'; else $(CYGPATH_W) '$(srcdir)/test/fuzz/script_interpreter.cpp'; fi`
+
+test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o: test/fuzz/script_marsbux_consensus.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_marsbux_consensus_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) $(CXXFLAGS) -MT test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o -MD -MP -MF test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Tpo -c -o test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o `test -f 'test/fuzz/script_marsbux_consensus.cpp' || echo '$(srcdir)/'`test/fuzz/script_marsbux_consensus.cpp
+	$(AM_V_at)$(am__mv) test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Tpo test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po
+#	$(AM_V_CXX)source='test/fuzz/script_marsbux_consensus.cpp' object='test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_marsbux_consensus_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) $(CXXFLAGS) -c -o test/fuzz/script_marsbux_consensus-script_marsbux_consensus.o `test -f 'test/fuzz/script_marsbux_consensus.cpp' || echo '$(srcdir)/'`test/fuzz/script_marsbux_consensus.cpp
+
+test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj: test/fuzz/script_marsbux_consensus.cpp
+	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_marsbux_consensus_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) $(CXXFLAGS) -MT test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj -MD -MP -MF test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Tpo -c -o test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj `if test -f 'test/fuzz/script_marsbux_consensus.cpp'; then $(CYGPATH_W) 'test/fuzz/script_marsbux_consensus.cpp'; else $(CYGPATH_W) '$(srcdir)/test/fuzz/script_marsbux_consensus.cpp'; fi`
+	$(AM_V_at)$(am__mv) test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Tpo test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po
+#	$(AM_V_CXX)source='test/fuzz/script_marsbux_consensus.cpp' object='test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_marsbux_consensus_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_marsbux_consensus_CXXFLAGS) $(CXXFLAGS) -c -o test/fuzz/script_marsbux_consensus-script_marsbux_consensus.obj `if test -f 'test/fuzz/script_marsbux_consensus.cpp'; then $(CYGPATH_W) 'test/fuzz/script_marsbux_consensus.cpp'; else $(CYGPATH_W) '$(srcdir)/test/fuzz/script_marsbux_consensus.cpp'; fi`
 
 test/fuzz/script_ops-script_ops.o: test/fuzz/script_ops.cpp
 	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_fuzz_script_ops_CPPFLAGS) $(CPPFLAGS) $(test_fuzz_script_ops_CXXFLAGS) $(CXXFLAGS) -MT test/fuzz/script_ops-script_ops.o -MD -MP -MF test/fuzz/$(DEPDIR)/script_ops-script_ops.Tpo -c -o test/fuzz/script_ops-script_ops.o `test -f 'test/fuzz/script_ops.cpp' || echo '$(srcdir)/'`test/fuzz/script_ops.cpp
@@ -22240,11 +22237,6 @@ distclean: distclean-recursive
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-addresstablemodel.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-askpassphrasedialog.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-bantablemodel.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbux.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxaddressvalidator.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxamountfield.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxgui.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxunits.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-clientmodel.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-coincontroldialog.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-coincontroltreewidget.Po
@@ -22256,15 +22248,15 @@ distclean: distclean-recursive
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-macdockiconhandler.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-macnotificationhandler.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-macos_appnap.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbux.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxaddressvalidator.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxamountfield.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxgui.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxunits.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_addressbookpage.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_addresstablemodel.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_askpassphrasedialog.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_bantablemodel.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbux.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxaddressvalidator.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxamountfield.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxgui.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxunits.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_clientmodel.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_coincontroldialog.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_coincontroltreewidget.Po
@@ -22275,6 +22267,11 @@ distclean: distclean-recursive
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_intro.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_macdockiconhandler.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_macnotificationhandler.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbux.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxaddressvalidator.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxamountfield.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxgui.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxunits.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_modaloverlay.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_notificator.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_openuridialog.Po
@@ -22375,13 +22372,13 @@ distclean: distclean-recursive
 	-rm -f script/$(DEPDIR)/libmarsbux_common_a-sign.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_common_a-signingprovider.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_common_a-standard.Po
-	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-marsbuxconsensus.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-interpreter.Po
+	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-marsbuxconsensus.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-script.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-script_error.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_server_a-sigcache.Po
-	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-marsbuxconsensus.Plo
 	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-interpreter.Plo
+	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-marsbuxconsensus.Plo
 	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-script.Plo
 	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-script_error.Plo
 	-rm -f support/$(DEPDIR)/libmarsbux_util_a-cleanse.Po
@@ -22594,11 +22591,11 @@ distclean: distclean-recursive
 	-rm -f test/fuzz/$(DEPDIR)/rolling_bloom_filter-rolling_bloom_filter.Po
 	-rm -f test/fuzz/$(DEPDIR)/script-script.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_assets_test_minimizer-script_assets_test_minimizer.Po
-	-rm -f test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_descriptor_cache-script_descriptor_cache.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_deserialize-deserialize.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_flags-script_flags.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_interpreter-script_interpreter.Po
+	-rm -f test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_ops-script_ops.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_sigcache-script_sigcache.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_sign-script_sign.Po
@@ -23032,11 +23029,6 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-addresstablemodel.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-askpassphrasedialog.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-bantablemodel.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbux.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxaddressvalidator.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxamountfield.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxgui.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxunits.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-clientmodel.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-coincontroldialog.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-coincontroltreewidget.Po
@@ -23048,15 +23040,15 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-macdockiconhandler.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-macnotificationhandler.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-macos_appnap.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbux.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxaddressvalidator.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxamountfield.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxgui.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-marsbuxunits.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_addressbookpage.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_addresstablemodel.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_askpassphrasedialog.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_bantablemodel.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbux.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxaddressvalidator.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxamountfield.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxgui.Po
-	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxunits.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_clientmodel.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_coincontroldialog.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_coincontroltreewidget.Po
@@ -23067,6 +23059,11 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_intro.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_macdockiconhandler.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_macnotificationhandler.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbux.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxaddressvalidator.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxamountfield.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxgui.Po
+	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_marsbuxunits.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_modaloverlay.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_notificator.Po
 	-rm -f qt/$(DEPDIR)/libmarsbuxqt_a-moc_openuridialog.Po
@@ -23167,13 +23164,13 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f script/$(DEPDIR)/libmarsbux_common_a-sign.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_common_a-signingprovider.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_common_a-standard.Po
-	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-marsbuxconsensus.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-interpreter.Po
+	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-marsbuxconsensus.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-script.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_consensus_a-script_error.Po
 	-rm -f script/$(DEPDIR)/libmarsbux_server_a-sigcache.Po
-	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-marsbuxconsensus.Plo
 	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-interpreter.Plo
+	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-marsbuxconsensus.Plo
 	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-script.Plo
 	-rm -f script/$(DEPDIR)/libmarsbuxconsensus_la-script_error.Plo
 	-rm -f support/$(DEPDIR)/libmarsbux_util_a-cleanse.Po
@@ -23386,11 +23383,11 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f test/fuzz/$(DEPDIR)/rolling_bloom_filter-rolling_bloom_filter.Po
 	-rm -f test/fuzz/$(DEPDIR)/script-script.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_assets_test_minimizer-script_assets_test_minimizer.Po
-	-rm -f test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_descriptor_cache-script_descriptor_cache.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_deserialize-deserialize.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_flags-script_flags.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_interpreter-script_interpreter.Po
+	-rm -f test/fuzz/$(DEPDIR)/script_marsbux_consensus-script_marsbux_consensus.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_ops-script_ops.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_sigcache-script_sigcache.Po
 	-rm -f test/fuzz/$(DEPDIR)/script_sign-script_sign.Po

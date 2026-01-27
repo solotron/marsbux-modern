@@ -408,7 +408,7 @@ void openDebugLogfile()
 
 bool openmarsbuxConf()
 {
-    fs::path pathConfig = GetConfigFile(gArgs.GetArg("-conf", marsbux_CONF_FILENAME));
+    fs::path pathConfig = GetConfigFile(gArgs.GetArg("-conf", MARSBUX_CONF_FILENAME));
 
     /* Create the file */
     fsbridge::ofstream configFile(pathConfig, std::ios_base::app);

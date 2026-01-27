@@ -108,9 +108,9 @@ am__aclocal_m4_deps = $(top_srcdir)/build-aux/m4/ax_boost_base.m4 \
 	$(top_srcdir)/build-aux/m4/ax_cxx_compile_stdcxx.m4 \
 	$(top_srcdir)/build-aux/m4/ax_gcc_func_attribute.m4 \
 	$(top_srcdir)/build-aux/m4/ax_pthread.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_find_bdb48.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_qt.m4 \
-	$(top_srcdir)/build-aux/m4/marsbux_subdir_to_include.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_find_bdb48.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_qt.m4 \
+	$(top_srcdir)/build-aux/m4/bitcoin_subdir_to_include.m4 \
 	$(top_srcdir)/build-aux/m4/l_atomic.m4 \
 	$(top_srcdir)/build-aux/m4/l_socket.m4 \
 	$(top_srcdir)/build-aux/m4/libtool.m4 \
@@ -128,13 +128,12 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/src/config/marsbux-config.h
-CONFIG_CLEAN_FILES = libmarsbuxconsensus.pc share/setup.nsi \
-	share/qt/Info.plist test/config.ini \
-	contrib/devtools/split-debug.sh doc/Doxyfile
+CONFIG_CLEAN_FILES = share/setup.nsi share/qt/Info.plist \
+	test/config.ini contrib/devtools/split-debug.sh doc/Doxyfile
 CONFIG_CLEAN_VPATH_FILES = contrib/devtools/security-check.py \
 	contrib/devtools/test-security-check.py contrib/filter-lcov.py \
 	test/functional/test_runner.py test/fuzz/test_runner.py \
-	test/util/marsbux-util-test.py test/util/rpcauth-test.py
+	test/util/rpcauth-test.py
 SCRIPTS = $(dist_noinst_SCRIPTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -219,7 +218,6 @@ am__define_uniq_tagged_files = \
   done | $(am__uniquify_input)`
 DIST_SUBDIRS = src doc/man
 am__DIST_COMMON = $(srcdir)/Makefile.in \
-	$(srcdir)/libmarsbuxconsensus.pc.in \
 	$(top_srcdir)/build-aux/compile \
 	$(top_srcdir)/build-aux/config.guess \
 	$(top_srcdir)/build-aux/config.sub \
@@ -237,7 +235,6 @@ am__DIST_COMMON = $(srcdir)/Makefile.in \
 	$(top_srcdir)/test/config.ini.in \
 	$(top_srcdir)/test/functional/test_runner.py \
 	$(top_srcdir)/test/fuzz/test_runner.py \
-	$(top_srcdir)/test/util/marsbux-util-test.py \
 	$(top_srcdir)/test/util/rpcauth-test.py COPYING INSTALL.md \
 	README.md build-aux/compile build-aux/config.guess \
 	build-aux/config.sub build-aux/install-sh build-aux/ltmain.sh \
@@ -300,11 +297,6 @@ AWK = @AWK@
 BDB_CFLAGS = @BDB_CFLAGS@
 BDB_CPPFLAGS = @BDB_CPPFLAGS@
 BDB_LIBS = @BDB_LIBS@
-marsbux_CLI_NAME = @marsbux_CLI_NAME@
-marsbux_DAEMON_NAME = @marsbux_DAEMON_NAME@
-marsbux_GUI_NAME = @marsbux_GUI_NAME@
-marsbux_TX_NAME = @marsbux_TX_NAME@
-marsbux_WALLET_TOOL_NAME = @marsbux_WALLET_TOOL_NAME@
 BOOST_CPPFLAGS = @BOOST_CPPFLAGS@
 BOOST_FILESYSTEM_LIB = @BOOST_FILESYSTEM_LIB@
 BOOST_LDFLAGS = @BOOST_LDFLAGS@
@@ -569,6 +561,11 @@ libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
 mandir = @mandir@
+marsbux_CLI_NAME = @marsbux_CLI_NAME@
+marsbux_DAEMON_NAME = @marsbux_DAEMON_NAME@
+marsbux_GUI_NAME = @marsbux_GUI_NAME@
+marsbux_TX_NAME = @marsbux_TX_NAME@
+marsbux_WALLET_TOOL_NAME = @marsbux_WALLET_TOOL_NAME@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
 pdfdir = @pdfdir@
@@ -762,8 +759,6 @@ $(top_srcdir)/src/config/marsbux-config.h.in: @MAINTAINER_MODE_TRUE@ $(am__confi
 
 distclean-hdr:
 	-rm -f src/config/marsbux-config.h src/config/stamp-h1
-libmarsbuxconsensus.pc: $(top_builddir)/config.status $(srcdir)/libmarsbuxconsensus.pc.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
 share/setup.nsi: $(top_builddir)/config.status $(top_srcdir)/share/setup.nsi.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 share/qt/Info.plist: $(top_builddir)/config.status $(top_srcdir)/share/qt/Info.plist.in

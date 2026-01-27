@@ -42,7 +42,7 @@ class UniValue;
 // Application startup time (used for uptime calculation)
 int64_t GetStartupTime();
 
-extern const char * const marsbux_CONF_FILENAME;
+extern const char * const MARSBUX_CONF_FILENAME;
 extern const char * const marsbux_SETTINGS_FILENAME;
 
 void SetupEnvironment();
